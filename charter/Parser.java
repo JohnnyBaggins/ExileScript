@@ -22,6 +22,8 @@ public class Parser {
 		for (Decade d : decades){
 			d.printDecade();
 		}
+		
+		
 	}
 	
 	public void openFile(String path){
@@ -58,9 +60,23 @@ public class Parser {
 	}
 	
 	private void processYear(String year){
-		int decadeValue = Integer.parseInt(year);
-		Decade decade = new Decade(decadeValue);
-		decades.add(decade);
+		int value = Integer.parseInt(year);
+		Year y = new Year(value);
+		boolean fits = false;
+		for (Decade d : decades){
+			if (d.yearBelongsIntoDecade(y)){
+				fits = true;
+			}
+		}
+		
+		
+		if (fits){
+			decades.get(decades.size()-1).addYear(y);
+		}else{
+			Decade decade = new Decade(value);
+			decades.add(decade);
+			decades.get(decades.size()-1).addYear(y);
+		}		
 	}
 	
 	

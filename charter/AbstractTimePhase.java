@@ -25,5 +25,9 @@ public class AbstractTimePhase {
 		}
 		return false;
 	}
+	
+	public ArrayList<Album> getAlbums(){
+		return albums;
+	}
 
 }
