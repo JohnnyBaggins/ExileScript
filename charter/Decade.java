@@ -1,5 +1,9 @@
 package charter;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Decade extends AbstractTimePhase {
@@ -31,22 +35,22 @@ public class Decade extends AbstractTimePhase {
 		years.get(years.size()-1).addAlbum(album);
 	}
 	
-	public void printDecade(){
-		java.util.Collections.sort(albums, new AlbumComparator());
-		System.out.println("The years "+yearStart+" to "+yearEnd+":");
-		printSuperList();
-		System.out.println("============================================");
-		for (Year y : years){
-			y.printYear();
-		}
+	public void printDecade(BufferedWriter output) throws IOException{
+	    
+			java.util.Collections.sort(albums, new AlbumComparator());
+			output.write("The years "+yearStart+" to "+yearEnd+":\n");
+			printSuperList(output);
+			output.write("============================================\n");
+			for (Year y : years){
+				  y.printYear(output);
+			}
 	}
-	
-	private void printSuperList(){
+	private void printSuperList(BufferedWriter output) throws IOException {
 		ArrayList<Album> superList = createSuperList();
 		java.util.Collections.sort(superList, new AlbumComparator());
 		int counter = 1;
 		for (Album a : superList){
-			System.out.println("Place "+counter+": "+a.artistName+" - "+a.albumName+" ("+a.count+")");
+			output.write("Place "+counter+": "+a.artistName+" - "+a.albumName+" ("+a.count+")\n");
 			counter++;
 			if (counter == 11){
 				break;

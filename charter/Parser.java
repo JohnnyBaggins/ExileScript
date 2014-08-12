@@ -1,5 +1,8 @@
 package charter;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -18,10 +21,14 @@ public class Parser {
 		Parser p = new Parser();
 		p.openFile("C:\\Users\\Jo\\Desktop\\hello.txt");
 		p.processLineByLine();
+		File file = new File("TRUE SATANIC WURST.txt");
+		BufferedWriter output = new BufferedWriter(new FileWriter(file));
 		
 		for (Decade d : decades){
-			d.printDecade();
+			d.printDecade(output);
 		}
+		
+		output.close();
 		
 		
 	}

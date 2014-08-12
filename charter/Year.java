@@ -1,5 +1,8 @@
 package charter;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 public class Year extends AbstractTimePhase {
 	
 	int yearNumber;
@@ -8,12 +11,12 @@ public class Year extends AbstractTimePhase {
 		this.yearNumber = year;
 	}
 	
-	public void printYear(){
+	public void printYear(BufferedWriter output) throws IOException {
 		java.util.Collections.sort(albums, new AlbumComparator());
-		System.out.println("The year "+yearNumber+":");
+		output.write("The year "+yearNumber+":\n");
 		for (Album a : albums){
-			System.out.println(a.artistName+" - "+a.albumName+" ("+a.count+")");
-		}System.out.println("");
+			output.write(a.artistName+" - "+a.albumName+" ("+a.count+")\n");
+		}output.write("\n");
 	}
 	
 	public int getYear(){
