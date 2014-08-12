@@ -26,6 +26,7 @@ public class Parser {
 		
 		for (Decade d : decades){
 			d.printDecade(output);
+			output.write("\n\n\n");
 		}
 		
 		output.close();

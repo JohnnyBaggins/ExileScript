@@ -1,8 +1,6 @@
 package charter;
 
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -38,7 +36,7 @@ public class Decade extends AbstractTimePhase {
 	public void printDecade(BufferedWriter output) throws IOException{
 	    
 			java.util.Collections.sort(albums, new AlbumComparator());
-			output.write("The years "+yearStart+" to "+yearEnd+":\n");
+			output.write("The decade "+yearStart+" to "+yearEnd+":\n");
 			printSuperList(output);
 			output.write("============================================\n");
 			for (Year y : years){
