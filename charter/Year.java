@@ -1,5 +1,7 @@
 package charter;
 
-public class Year {
-
+public class Year extends AbstractTimePhase {
+	
+	int yearNumber;
+	
 }

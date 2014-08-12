@@ -12,7 +12,6 @@ public class Album {
 	}
 	
 	public void increaseCount(){
-		System.out.println("Increased a count!");
 		count++;
 	}
 	
